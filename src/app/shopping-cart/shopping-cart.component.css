@@ -1,0 +1,13 @@
+.wh-10{
+    width: 30px;
+    height: 30px;
+}
+td img {
+    text-decoration: none;
+    color: inherit;
+    border: none;
+    outline: none;
+    height: 162px;
+    width: 250px;
+    margin: 20px 0px;
+}

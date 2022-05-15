@@ -1,0 +1,113 @@
+<div class="container py-5">
+    <form [formGroup]="registerForm" class="row g-3 align-items-center" (ngSubmit)="submitRegister()">
+        <!-- name -->
+        <div class="col-12">
+            <label for="registeremail">Name</label>
+            <input type="text" class="form-control" id="registerName" aria-describedby="registerName"
+                name="registerName" formControlName="registerName">
+            <div *ngIf="registerFormControls.registerName.touched && !registerFormControls.registerName.valid">
+                <small class="text-danger" *ngIf="registerFormControls.registerName.errors?.required">This is a required
+                    field</small>
+                <small class="text-danger"
+                    *ngIf="registerFormControls.registerName.errors?.pattern || registerFormControls.registerName.errors?.minlength">This
+                    is not a valid name</small>
+            </div>
+        </div>
+        <!-- email -->
+        <div class="col-12">
+            <label for="registeremail">Email</label>
+            <input type="email" class="form-control" id="registerEmail" aria-describedby="registerEmail"
+                name="registerEmail" formControlName="registerEmail">
+            <div *ngIf="registerFormControls.registerEmail.touched && !registerFormControls.registerEmail.valid">
+                <small class="text-danger" *ngIf="registerFormControls.registerEmail.errors?.required">This is a
+                    required field</small>
+                <small class="text-danger" *ngIf="registerFormControls.registerEmail.errors?.email">This is not a valid
+                    email</small>
+            </div>
+        </div>
+        <!-- username -->
+        <div class="col-12">
+            <label for="registerUsername">User Name</label>
+            <input type="text" class="form-control" id="registerUsername" aria-describedby="registerUsername"
+                name="registerUsername" formControlName="registerUsername">
+            <div *ngIf="registerFormControls.registerUsername.touched && !registerFormControls.registerUsername.valid">
+                <small class="text-danger" *ngIf="registerFormControls.registerUsername.errors?.required">This is a
+                    required field</small>
+                <small class="text-danger"
+                    *ngIf="registerFormControls.registerUsername.errors?.pattern || registerFormControls.registerUsername.errors?.minlength">This
+                    is an invalid username</small>
+            </div>
+
+        </div>
+        <!-- password -->
+        <div class="col-12">
+            <label for="registerPassword">Password</label>
+            <input type="password" class="form-control" id="registerPassword" aria-describedby="registerPassword"
+                name="registerPassword" formControlName="registerPassword">
+            <div *ngIf="registerFormControls.registerPassword.touched && !registerFormControls.registerPassword.valid">
+                <small class="text-danger" *ngIf="registerFormControls.registerPassword.errors?.required">This is a
+                    required field</small>
+                <small class="text-danger" *ngIf="!registerFormControls.registerPassword.errors?.valid">This is not a
+                    valid
+                    password</small>
+            </div>
+        </div>
+        <!-- confirm password -->
+        <div class="col-12">
+            <label for="registerConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="registerConfirmPassword"
+                aria-describedby="registerConfirmPassword" name="registerConfirmPassword"
+                formControlName="registerConfirmPassword">
+            <div
+                *ngIf="registerFormControls.registerConfirmPassword.touched && !registerFormControls.registerConfirmPassword.valid">
+                <small class="text-danger" *ngIf="registerFormControls.registerConfirmPassword.errors?.required">This is
+                    a required field</small>
+                <small class="text-danger"
+                    *ngIf="registerFormControls.registerConfirmPassword.errors?.confirmedValidator">Password and
+                    Confirm Password must be a match.
+                </small>
+            </div>
+            <small class="text-success" *ngIf="registerFormControls.registerConfirmPassword.valid">Password and
+                Confirm Password are matched!!
+            </small>
+        </div>
+
+        <!-- form array -->
+        <button class="btn btn-success mb-2 col-2 ms-2" (click)="addAddress()">add new Address</button>
+
+        <div formArrayName="address" class="py-1">
+            <div *ngFor="let addressForm of registerForm.controls.address.value; let i = index">
+                <div class="address-form-row" [formGroupName]="i">
+                    <div>
+                        <label>Address</label>
+                        <input type="text" name="addr" formControlName="addr" placeholder="Address" aria-describedby="street"
+                            class="form-control">
+                    </div>
+                    <div>
+                        <label>Street</label>
+                        <input name="street" formControlName="street" placeholder="street" aria-describedby="street"
+                            class="form-control mt-3">
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <input name="city" formControlName="city" placeholder="city" aria-describedby="city"
+                            class="form-control mt-3">
+                    </div>
+                    <div>
+                        <label>Country</label>
+                        <input name="country" formControlName="country" placeholder="country" aria-describedby="country"
+                            class="form-control my-3">
+                    </div>
+                    <button class="btn btn-success mb-2 col-2" (click)="deleteAddress(i)">Delete Address</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- register btn -->
+        <div class="col-auto">
+            <button type="submit" class="btn btn-success">Register</button>
+        </div>
+    </form>
+    <p>Do you have account ? <a routerLink="/login"  (click)="redirectToLogin()" class="text-primary text-decoration-undeline">login</a></p>
+
+</div>

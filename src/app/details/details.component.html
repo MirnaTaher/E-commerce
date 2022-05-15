@@ -1,0 +1,22 @@
+<div class="container">
+    <h5 class="fs-2 py-5">{{item?.title}}</h5>
+
+    <div class="d-flex justify-content-between">
+        <figure class="col-4">
+            <img [src]="item?.image" alt="product">
+        </figure>
+
+        <div class="col-7">
+            <p class="fs-4"><span class="text-primary fs-3">Description: </span>{{item?.description}}</p>
+            <p class="fs-4"><span class="text-primary fs-3">Price: </span>{{item?.price}} EGP</p>
+            <p class="fs-4"><span class="text-primary fs-3">Category: </span>{{item?.category}}</p>
+            <p class="fs-4"><span class="text-primary fs-3">Rating: </span></p>
+            <ul class="fs-4"><span class="text-primary fs-3"></span>
+                <li>stars: {{item?.rating.rate}}</li>
+                <li>count: {{item?.rating.count}}</li>
+            </ul>
+            <a class="d-inline-block mb-2 btn btn-primary"
+            routerLink='/cart' (click)="addToCart(item)">Add To Cart</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="row row-cols-1 row-cols-md-2 col-8 g-4">
+      <div *ngFor="let prod of productList" class="col">
+        <app-product-card [prod]="prod"></app-product-card>
+      </div>
+    </div>
+    <div class="col-4 border rounded-3 g-4 mt-5">
+      <app-wishlist></app-wishlist>
+    </div>
+  </div>
+</div>

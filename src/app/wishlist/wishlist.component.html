@@ -1,0 +1,18 @@
+<div>
+    <div class="row py-3">
+        <h3 class="col-6">Wishlist</h3>
+        <h3 class="col-6 text-end">Products: {{ wishlist.wishlistArr.length }}</h3>
+        <div class="row justify-content-between my-3 align-items-center"
+         *ngFor="let item of wishlist.wishlistArr, let i = index">
+            <div class="col-3">
+                <img [src]="item.image" alt="image" style="width:100%">
+            </div>
+            <div class="col-6">
+                <h6>{{item.title}}</h6>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-danger text-white" (click)="removeItem(item,i)">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>

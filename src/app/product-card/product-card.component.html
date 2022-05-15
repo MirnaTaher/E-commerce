@@ -1,0 +1,13 @@
+<div class="card h-100">
+    <img [src]="prod.image" class="card-img-top h-50 p-5" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{prod?.title}}
+        </h5>
+        <p class="card-text">{{prod?.description}}</p>
+        <p class="card-text fw-bold text-primary">{{prod?.category | titlecase}}</p>
+        <h5 class="card-text fs-2">{{prod?.price | currency: '':'EGP':'':'fr'}}</h5>
+        <button class="d-inline-block mb-2 btn btn-primary" [routerLink]="['/product', prod.id]">Product Details</button>
+        <button class="d-block btn mb-2 btn-primary" (click)="addToCart(prod)">Add to Cart</button>
+        <button class="d-block btn btn-primary" (click)="addToWishlist(prod)"><i class="fas fa-star"></i></button>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container py-5">
+    <form [formGroup]="loginForm" class="row g-3 align-items-center" (ngSubmit)="submitLogin()">
+        <div class="col-12">
+            <label for="loginEmail">Email</label>
+            <input type="email" class="form-control" id="loginEmail" aria-describedby="loginEmail" name="loginEmail"
+                formControlName="loginEmail">
+            <div *ngIf="loginFormControls.loginEmail.touched && !loginFormControls.loginEmail.valid">
+                <small class="text-danger" *ngIf="loginFormControls.loginEmail.errors?.required">This is a
+                    required field</small>
+                <small class="text-danger" *ngIf="loginFormControls.loginEmail.errors?.email">This is not a valid
+                    email</small>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" aria-describedby="loginPassword" name="loginPassword"
+            formControlName="loginPassword">
+            <div *ngIf="loginFormControls.loginPassword.touched && !loginFormControls.loginPassword.valid">
+                <small class="text-danger" *ngIf="loginFormControls.loginPassword.errors?.required">This is a required
+                    field</small>
+                <small class="text-danger" *ngIf="loginFormControls.loginPassword.errors?.pattern">This is not a valid
+                    password</small>
+            </div>
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Login</button>
+        </div>
+    </form>
+
+    <p>Don’t have account? <a routerLink="/register" (click)="redirectToRegister()" class="text-primary text-decoration-undeline">Register</a></p>
+</div>

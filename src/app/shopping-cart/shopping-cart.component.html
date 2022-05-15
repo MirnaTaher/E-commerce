@@ -1,0 +1,39 @@
+<div class="container my-5 py-5 border border-radius">
+    <h3>Cart</h3>
+    <div class="card-table">
+        <div class="card-product">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:12.5%">Image</th>
+                        <th style="width:25%">Name</th>
+                        <th style="width:12.5%">Price</th>
+                        <th style="width:12.5%">Quantity</th>
+                        <th style="width:12.5%"></th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of products; let i=index">
+                        <td><img src={{item.image}} alt="item image"></td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.price}}</td>
+                        <td><button class="btn-danger rounded-circle wh-10 border-0"
+                                (click)="plusItem(item)">+</button> {{item.quantity}} <button
+                                class="btn-danger rounded-circle wh-10 border-0" (click)="minusItem(item)">-</button></td>
+                        <td><button (click)="removeItem(item)" class="btn btn-danger">Remove</button></td>
+                    </tr>
+                </tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><button (click)="emptyCart()" class="btn border-radius border-danger text-danger">Empty
+                            Cart</button></td>
+                    <td><button routerLink="" class="btn border-radius border-primary text-primary">Shop More</button>
+                    </td>
+                    <td> <strong>Total:</strong> {{grandTotal }} EGP </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
